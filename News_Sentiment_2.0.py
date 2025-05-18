@@ -245,6 +245,7 @@ def create_weighted_sentiment_plot(news_data):
 ANTH_KEY = st.secrets["ANTHROPIC_API_KEY"]
 
 
+
 def get_claude_news_summary(company, news_list):
     client = anthropic.Anthropic(api_key=ANTH_KEY)
 
