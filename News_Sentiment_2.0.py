@@ -33,9 +33,10 @@ def load_model():
     return classifier
 
 def predict_sentiment(classifier, text):
-    result = classifier(text)[0]
+    with torch.no_grad():
+        result = classifier(text)[0]
     label = result['label']
-    score = result['score']
+    score = float(result['score'])
 
     if label == 'Positive':
         return 'Positive', score, 'green'
@@ -43,6 +44,7 @@ def predict_sentiment(classifier, text):
         return 'Negative', score, 'red'
     else:
         return 'Neutral', score, 'gray'
+
 
 def fetch_news(company, classifier, numberOfArticles=50, selected_sources=None):
     news_data = []
