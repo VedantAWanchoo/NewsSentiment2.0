@@ -33,11 +33,15 @@ def load_model():
                           
     return classifier
 
+
 def predict_sentiment(classifier, text):
     with torch.no_grad():
-        result = classifier(text)[0]
-    label = result['label']
-    score = float(result['score'])
+        outputs = classifier(text, return_all_scores=True)[0]
+
+    # Find the label with highest score manually
+    best = max(outputs, key=lambda x: x['score'])
+    label = best['label']
+    score = best['score']
 
     if label == 'Positive':
         return 'Positive', score, 'green'
