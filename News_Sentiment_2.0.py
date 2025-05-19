@@ -16,6 +16,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from transformers import BertForSequenceClassification, BertTokenizer, pipeline
 import anthropic
+import torch
 
 # Download necessary NLTK data
 nltk.download('punkt')
@@ -396,8 +397,6 @@ def display_news_sentiment2():
 # & "C:/Users/Vedant Wanchoo/anaconda3/python.exe" -m pip install streamlit pandas plotly requests beautifulsoup4 nltk transformers torch anthropic
 
 
-
 # ✅ Run the app
 if __name__ == "__main__":
     display_news_sentiment2()
-
