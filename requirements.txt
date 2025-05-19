@@ -1,9 +1,9 @@
 streamlit
+transformers==4.36.2
+torch==2.2.0
 pandas
 plotly
-requests
 beautifulsoup4
+requests
 nltk
-transformers
-torch
 anthropic
