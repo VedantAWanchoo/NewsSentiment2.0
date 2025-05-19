@@ -29,7 +29,7 @@ def load_model():
     device = torch.device("cpu")
     finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone', num_labels=3).to(device)
     tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
-    classifier = pipeline("text-classification",model=finbert,tokenizer=tokenizer,device=-1  # Ensures it uses CPU)
+    classifier = pipeline("text-classification",model=finbert,tokenizer=tokenizer,device=-1)
                           
     return classifier
 
