@@ -24,13 +24,13 @@ nltk.download('stopwords')
 
 def load_model():
     """
-    Loads the finbert model
+    Loads the FinBERT model
     """
-    finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone', num_labels=3)
+    device = torch.device("cpu")
+    finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone', num_labels=3).to(device)
     tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
-    #classifier = pipeline("text-classification", model=finbert, tokenizer=tokenizer)
-    classifier = pipeline("text-classification", model=finbert, tokenizer=tokenizer, device=-1)
-
+    classifier = pipeline("text-classification",model=finbert,tokenizer=tokenizer,device=-1  # Ensures it uses CPU)
+                          
     return classifier
 
 def predict_sentiment(classifier, text):
