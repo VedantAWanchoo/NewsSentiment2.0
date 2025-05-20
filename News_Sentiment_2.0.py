@@ -14,6 +14,7 @@ from collections import Counter
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from transformers.models.bert import BertForSequenceClassification
 from transformers import BertForSequenceClassification, BertTokenizer, pipeline
 import anthropic
 import torch
