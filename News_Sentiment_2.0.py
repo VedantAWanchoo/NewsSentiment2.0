@@ -12,6 +12,7 @@ import random
 from datetime import datetime, timedelta
 from collections import Counter
 import nltk
+from nltk.data import find
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from transformers.models.bert import BertForSequenceClassification
@@ -20,8 +21,20 @@ import anthropic
 import torch
 
 # Download necessary NLTK data
-nltk.download('punkt')
-nltk.download('stopwords')
+#nltk.download('punkt')
+#nltk.download('stopwords')
+
+try:
+    find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+
 
 def load_model():
     """
